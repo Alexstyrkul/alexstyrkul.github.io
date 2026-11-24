@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Oleksandr Styrkul — QA Engineer</title>
+<meta name="description" content="QA Engineer. Release QA, XCUITest automation, performance testing and AI tooling for iOS and macOS apps.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oleksandr Styrkul — QA Engineer">
+<meta property="og:description" content="Release QA, XCUITest automation, performance testing and AI-assisted QA. 280+ UI tests, ~47 releases.">
+<meta property="og:url" content="https://alexstyrkul.github.io/">
+<meta property="og:image" content="https://alexstyrkul.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+
+:root{
+  --bg:#000000;
+  --raised:#141416;
+  --line:#2c2c30;
+  --tx:#ffffff;
+  --tx2:#c7c7cc;
+  --tx3:#98989f;
+  --pass:#3ecf8e;
+  --kw:#ff6fb0;
+  --type:#5ac8fa;
+  --num:#ffd25f;
+  --link:#4da3ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--tx2);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55;font-size:17px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+ul{list-style:none}
+.code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+.w{max-width:1040px;margin:0 auto;padding:0 28px}
+h1,h2,h3{color:var(--tx);font-weight:700;letter-spacing:-.02em}
+strong{color:var(--tx);font-weight:600}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav .w{height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav .me{color:var(--tx);font-weight:600;font-size:15px}
+.nav nav{display:flex;gap:24px;align-items:center;font-size:14px}
+.nav nav a{color:var(--tx2)}
+.nav nav a:hover{color:var(--tx);text-decoration:none}
+
+/* buttons: light pill on dark, like Apple's dark-mode CTAs */
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border-radius:999px;font-size:16px;font-weight:600}
+.btn.p{background:#f2f2f7;color:#1f1f24}
+.btn.p:hover{background:#fff;text-decoration:none}
+.btn.s{color:var(--tx);box-shadow:inset 0 0 0 1px #5a5c66}
+.btn.s:hover{box-shadow:inset 0 0 0 1px var(--tx);text-decoration:none}
+.nav .btn{min-height:36px;padding:0 16px;font-size:14px}
+
+/* hero */
+.hero{padding:96px 0 104px}
+.hero .w{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:76px;line-height:1;letter-spacing:-.04em}
+.hero .role{font-size:22px;color:var(--tx);font-weight:500;margin-top:14px}
+.hero p{font-size:19px;margin-top:20px;max-width:460px}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.where{margin-top:24px;font-size:15px;color:var(--tx3)}
+
+/* test navigator */
+.run{background:#0d0d0f;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.run header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--tx3)}
+.run header b{color:var(--tx);font-weight:600}
+.run .log{height:286px;overflow:hidden;padding:10px 16px;font-size:13px;line-height:1.95;color:#dcdce0}
+.run .log div{display:flex;gap:10px;white-space:nowrap}
+.run .log div>span:nth-child(2){overflow:hidden;text-overflow:ellipsis;min-width:0}
+.run .log div>.t{flex:none}
+.run .ok{color:var(--pass)}
+.run .cls{color:var(--type)}
+.run .t{color:var(--tx3);margin-left:auto}
+.run .sum{color:var(--pass);font-weight:600}
+.run footer{display:flex;justify-content:space-between;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--tx3)}
+.run footer b{color:var(--tx);font-variant-numeric:tabular-nums}
+.prog{height:2px;background:var(--line)}.prog i{display:block;height:100%;width:0;background:var(--pass)}
+
+/* sections */
+section.s{padding:96px 0;border-top:1px solid var(--line)}
+.s h2{font-size:40px;line-height:1.1}
+.s .intro{font-size:19px;max-width:620px;margin-top:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;align-items:start}
+.list li{padding:16px 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0;padding-top:0}
+.list h3{font-size:17px;font-weight:600;letter-spacing:0;margin-bottom:2px}
+.list p{font-size:16px}
+
+/* results report */
+.report{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.report .row{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:baseline;padding:18px 22px;border-top:1px solid var(--line)}
+.report .row:first-child{border-top:0}
+.report .ok{color:var(--pass)}
+.report .lbl{color:var(--tx2)}
+.report .val{color:var(--tx);font-size:28px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right}
+
+/* versions */
+.vers figcaption{font-size:14px;color:var(--tx3);margin-bottom:12px}
+.vers ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px}
+.vers li{color:var(--tx2)}
+.vers li.major{color:var(--num)}
+.vers .more{display:none;font:inherit;font-size:14px;background:none;border:0;color:var(--link);cursor:pointer;min-height:44px;padding:0}
+
+/* charts */
+.panel{background:var(--raised);border-radius:14px;padding:26px 26px 22px}
+.panel h3{font-size:16px;font-weight:600;letter-spacing:0}
+.panel .sub{font-size:14px;color:var(--tx3);margin-top:2px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:200px;margin-top:24px;border-bottom:1px solid var(--line)}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bars i{display:block;width:100%;max-width:48px;height:var(--h);background:#3a3a40;border-radius:5px 5px 0 0}
+.bars div:last-child i{background:var(--pass)}
+.bars span{font-size:13px;color:var(--tx2);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.axis{display:flex;gap:10px;margin-top:8px}
+.axis span{flex:1;text-align:center;font-size:13px;color:var(--tx3)}
+.js .bars i{height:0;transition:height 1.1s cubic-bezier(.2,.7,.2,1)}
+.js .go .bars i{height:var(--h)}
+.cmp .r{margin-top:20px}
+.cmp .r p{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:7px}
+.cmp .r p b{color:var(--tx);white-space:nowrap;font-variant-numeric:tabular-nums}
+.track{height:10px;border-radius:5px;background:#26262a;overflow:hidden}
+.track i{display:block;height:100%;width:var(--w);border-radius:5px;background:#6e6e76}
+.track i.hl{background:var(--pass)}
+.js .track i{width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.js .go .track i{width:var(--w)}
+.cmp small{display:block;margin-top:16px;font-size:13px;color:var(--tx3)}
+
+/* terminal */
+.term{background:#0d0d0f;border:1px solid var(--line);border-radius:14px;padding:20px 22px;font-size:13.5px;line-height:1.85;color:#dcdce0;white-space:pre-wrap;word-break:break-word}
+.term .pr{color:var(--kw)}.term .dim{color:var(--tx3)}.term .ok{color:var(--pass)}.term .str{color:#fc6a5d}
+
+/* experience */
+.job{display:grid;grid-template-columns:200px 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--line)}
+.job:first-of-type{margin-top:40px}
+.job .when{color:var(--tx3);font-size:15px}
+.job h3{font-size:20px;letter-spacing:-.01em}
+.job .co{color:var(--tx3);font-size:15px}
+.job p{margin-top:10px;font-size:16px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:200px 1fr;gap:14px 32px;margin-top:40px;font-size:16px}
+.skills dt{color:var(--tx);font-weight:600}
+
+/* contact */
+.contact h2{font-size:40px}
+.contact .acts{margin-top:24px}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:72px;font-size:15px}
+.edu h3{font-size:15px;font-weight:600;letter-spacing:0;margin-bottom:6px}
+.edu p{color:var(--tx2)}
+
+@media(max-width:900px){
+  body{font-size:16px}
+  .nav nav a:not(.btn){display:none}
+  .nav .btn{min-height:44px}
+  .hero{padding:56px 0 72px}
+  .hero .w{grid-template-columns:1fr;gap:40px}
+  .hero h1{font-size:50px}.hero .role{font-size:19px}.hero p{font-size:17px}
+  .run .log{height:230px;font-size:12px}
+  section.s{padding:64px 0}
+  .s h2,.contact h2{font-size:30px}
+  .s .intro{font-size:17px}
+  .two{grid-template-columns:1fr;gap:36px;margin-top:32px}
+  .report .row{padding:14px 16px;grid-template-columns:22px 1fr auto}
+  .report .val{font-size:22px}
+  .vers li:nth-child(n+13){display:none}
+  .vers.open li{display:list-item}
+  .vers .more{display:inline}
+  .vers.open .more{display:none}
+  .term{font-size:12px;padding:16px}
+  .job,.skills{grid-template-columns:1fr;gap:4px}
+  .skills dd{margin-bottom:12px}
+  .edu{grid-template-columns:1fr;gap:24px;margin-top:48px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="nav"><div class="w">
+  <span class="me">Oleksandr Styrkul</span>
+  <nav aria-label="Sections"><a href="#releases">Releases</a><a href="#automation">Automation</a><a href="#performance">Performance</a><a href="#ai">AI tooling</a><a href="#experience">Experience</a><a class="btn p" href="#contact">Contact</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="w">
+  <div>
+    <h1>Oleksandr Styrkul</h1>
+    <div class="role">QA Engineer</div>
+    <p>I test Documents for iOS, iPadOS and macOS, run its releases, and build the automation and AI tools our QA team uses every day.</p>
+    <div class="acts"><a class="btn p" href="mailto:oleksandrstyrkul@gmail.com">Email me</a><a class="btn s" href="cv.pdf" download>Download CV (PDF)</a></div>
+    <p class="where">Warsaw, Poland</p>
+  </div>
+  <div class="run" role="img" aria-label="Test run of the DocumentsUITests suite: 280 tests passed">
+    <header><b class="code">DocumentsUITests</b><span id="st" class="code">Running</span></header>
+    <div class="prog"><i id="pb"></i></div>
+    <div class="log code" id="log"></div>
+    <footer class="code"><span>Passed</span><b id="cnt">280</b></footer>
+  </div>
+</div></section>
+
+<section class="s"><div class="w">
+  <h2>Results so far</h2>
+  <div class="report" id="report">
+    <div class="row"><span class="ok">✓</span><span class="lbl">Documents releases shipped as release QA owner, since 2024</span><span class="val" data-n="47" data-p="~">~47</span></div>
+    <div class="row"><span class="ok">✓</span><span class="lbl">UI tests in the regression suite I started from zero</span><span class="val" data-n="280" data-s="+">280+</span></div>
+    <div class="row"><span class="ok">✓</span><span class="lbl">Hours of manual testing freed up per quarter</span><span class="val" data-n="90" data-p="~">~90</span></div>
+    <div class="row"><span class="ok">✓</span><span class="lbl">Bugs reported, 50+ of them blockers or critical</span><span class="val" data-n="1100" data-s="+">1,100+</span></div>
+    <div class="row"><span class="ok">✓</span><span class="lbl">Monthly users of the app I test, rated 4.8 on the App Store</span><span class="val" data-n="12" data-s="M">12M</span></div>
+  </div>
+</div></section>
+
+<section class="s" id="releases"><div class="w">
+  <h2>Release QA for Documents</h2>
+  <p class="intro">A release every two weeks for four years. Since 2024 I own the release: test plan, regression, go/no-go and the phased rollout.</p>
+  <div class="two">
+    <figure class="vers" id="vers">
+      <figcaption>Documents versions I shipped as release QA. Major updates in yellow.</figcaption>
+      <ol class="code" id="verlist"></ol>
+      <button class="more" type="button" id="more">Show all versions</button>
+    </figure>
+    <ul class="list">
+      <li><h3>Test strategy for the riskiest areas</h3><p>Subscriptions and payments, a full UI redesign and AI features. I scoped coverage for each and took them through release.</p></li>
+      <li><h3>Close to users</h3><p>For Transcribe I ran an internal user interview; the fixes I proposed shipped before launch. For Extract Insights I pushed for localisation early, and it launched in several languages.</p></li>
+      <li><h3>Monetisation experiments</h3><p>QA owner for A/B tests across Amplitude, Firebase, RevenueCat and Braze, from setup to launch. I caught data issues that would have skewed revenue decisions.</p></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="s" id="automation"><div class="w">
+  <h2>Test automation</h2>
+  <p class="intro">I started the iOS regression suite on my own initiative in Swift and XCUITest, running on Jenkins. It passed code review without structural changes, and other QA engineers now write tests in it too.</p>
+  <div class="two">
+    <div class="panel" id="growth">
+      <h3>Suite size in 2026</h3>
+      <p class="sub">UI tests in the regression suite</p>
+      <div class="bars">
+        <div><span>0</span><i style="--h:1%"></i></div>
+        <div><span>23</span><i style="--h:8%"></i></div>
+        <div><span>47</span><i style="--h:17%"></i></div>
+        <div><span>60</span><i style="--h:21%"></i></div>
+        <div><span>113</span><i style="--h:40%"></i></div>
+        <div><span>253</span><i style="--h:89%"></i></div>
+        <div><span>283</span><i style="--h:100%"></i></div>
+      </div>
+      <div class="axis"><span>Feb</span><span>Mar</span><span>Jun</span><span>Jul</span><span>Oct</span><span>Nov</span><span>Now</span></div>
+    </div>
+    <ul class="list">
+      <li><h3>About 90 hours a quarter</h3><p>of manual regression now runs automatically.</p></li>
+      <li><h3>25 API smoke tests</h3><p>in TypeScript and Vitest, part of every release run.</p></li>
+      <li><h3>Easy to extend</h3><p>Page objects, shared flows and a separate test plan for each area of the app.</p></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="s" id="performance"><div class="w">
+  <h2>Performance testing</h2>
+  <p class="intro">I set up stress testing on real devices, using repeated runs and a statistical comparison so results don't depend on one lucky measurement.</p>
+  <div class="two">
+    <ul class="list">
+      <li><h3>Found the root cause</h3><p>of severe hangs when users keep very large libraries.</p></li>
+      <li><h3>Measured the fix</h3><p>App launch on a large library got about 30% faster and used less memory.</p></li>
+      <li><h3>Caught a regression</h3><p>in another flow before it reached a release.</p></li>
+    </ul>
+    <div class="panel cmp" id="perf">
+      <h3>App launch on a large library</h3>
+      <p class="sub">Relative time, from my perf suite</p>
+      <div class="r"><p><span>Before the fix</span><b>100%</b></p><div class="track"><i style="--w:100%"></i></div></div>
+      <div class="r"><p><span>After the fix</span><b>~70%</b></p><div class="track"><i class="hl" style="--w:70%"></i></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="s" id="ai"><div class="w">
+  <h2>AI tooling for QA</h2>
+  <p class="intro">I write Claude Code skills for the repetitive parts of QA work: bug reports, test checklists, release coordination and performance runs. They are reviewed and merged into the team's shared repository like any other code. I also audited the quality of AI summaries with an LLM-as-judge setup.</p>
+  <div class="two">
+    <pre class="term code" aria-label="Example: generating a bug report with a Claude Code skill"><span class="pr">$</span> claude /qa-bug-report <span class="str">"crash when opening a large zip on iPad"</span>
+<span class="dim">reading device logs…</span>
+<span class="dim">matching crash reports…</span>
+<span class="dim">writing steps, expected and actual result…</span>
+<span class="ok">✓ bug report ready for Jira</span>
+
+<span class="pr">$</span> claude /qa-release-flow
+<span class="ok">✓ release notes drafted, version tagged</span></pre>
+    <div class="panel cmp" id="ait">
+      <h3>Time per task</h3>
+      <p class="sub">My estimates, before and after the skills</p>
+      <div class="r"><p><span>Bug report by hand</span><b>~10 min</b></p><div class="track"><i style="--w:100%"></i></div></div>
+      <div class="r"><p><span>Bug report with a skill</span><b>~1 min</b></p><div class="track"><i class="hl" style="--w:10%"></i></div></div>
+      <small>Release coordination: about 40 minutes saved on every release.</small>
+    </div>
+  </div>
+  <ul class="list" style="margin-top:48px;max-width:620px">
+    <li><h3>UI tests written by an agent</h3><p>A pipeline that plans, writes, runs and fixes a test until it passes three times in a row. I review the result.</p></li>
+  </ul>
+</div></section>
+
+<section class="s" id="experience"><div class="w">
+  <h2>Experience</h2>
+  <article class="job">
+    <div class="when">Apr 2022 – now</div>
+    <div><h3>QA Engineer</h3><div class="co">Readdle, remote</div>
+      <p>Quality owner for Documents. Release QA, test strategy, UI and API automation, performance testing, AI tooling. Mentored QA engineers to full independence.</p></div>
+  </article>
+  <article class="job">
+    <div class="when">May 2021 – Apr 2022</div>
+    <div><h3>QA Engineer</h3><div class="co">Citrus, Ukraine</div>
+      <p>QA for a live e-commerce product on iOS, Android and Web with weekly releases. Wrote the test documentation from scratch, which became the team's pre-release checklist, and brought QA into feature discussions from the start of each sprint.</p></div>
+  </article>
+</div></section>
+
+<section class="s"><div class="w">
+  <h2>Skills and tools</h2>
+  <dl class="skills">
+    <dt>Testing</dt><dd>Manual, functional, regression, exploratory, UI/UX, API, performance</dd>
+    <dt>Automation</dt><dd>XCUITest, Swift, TypeScript, Vitest, Cypress, Python, pytest</dd>
+    <dt>CI/CD</dt><dd>Jenkins, CircleCI, GitHub Actions, Allure, AWS</dd>
+    <dt>Platforms</dt><dd>iOS, iPadOS, macOS, Android, Web</dd>
+    <dt>Performance</dt><dd>Xcode Instruments, XCTest metrics, Firebase Crashlytics</dd>
+    <dt>API and analytics</dt><dd>Postman, Charles Proxy, HTTP Toolkit, Amplitude, Firebase, RevenueCat, Braze</dd>
+    <dt>AI</dt><dd>Claude Code skills and agents, LLM-as-judge evaluation, prompt engineering</dd>
+    <dt>Process</dt><dd>Jira, QASphere, TestRail, Confluence, Git, GitHub, Agile, Scrum, Kanban</dd>
+  </dl>
+</div></section>
+
+<section class="s contact" id="contact"><div class="w">
+  <h2>Contact</h2>
+  <p class="intro">I'm looking for a QA role in a product team, ideally one that uses AI in testing.</p>
+  <div class="acts"><a class="btn p" href="mailto:oleksandrstyrkul@gmail.com">oleksandrstyrkul@gmail.com</a><a class="btn s" href="https://www.linkedin.com/in/oleksandr-styrkul-60a214218/" target="_blank" rel="noopener">LinkedIn</a><a class="btn s" href="https://github.com/Alexstyrkul" target="_blank" rel="noopener">GitHub</a><a class="btn s" href="cv.pdf" download>CV (PDF)</a></div>
+  <div class="edu">
+    <div><h3>Education</h3><p>Bachelor's degree in Oil and Gas Engineering, Odessa National Academy of Food Technologies, 2016–2020</p></div>
+    <div><h3>Courses</h3><p>API Testing, r_d school, 2025<br>iOS XCUITest UI Test Automation, Udemy<br>Code for Non-Developers, Hard Skill</p></div>
+    <div><h3>Languages</h3><p>Ukrainian, native<br>English, B2</p></div>
+  </div>
+</div></section>
+</main>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* test run — plays once on load */
+const T=[['FilesTests','testOpenPDFFromFiles'],['BillingTests','testSubscriptionPurchase'],['BillingTests','testRestorePurchases'],['SearchTests','testSearchInLargeLibrary'],['FilesTests','testDragAndDropToFolder'],['ShareTests','testShareExtensionSave'],['ViewerTests','testOfficeViewerOpens'],['ViewerTests','testAnnotatePage'],['FilesTests','testCreateFolder'],['FilesTests','testSortByDate'],['AudioTests','testVoiceNoteRecord'],['AudioTests','testPlaybackResumes'],['FilesTests','testZipExtract'],['FilesTests','testRenameFile'],['FilesTests','testDeleteAndUndo'],['iPadTests','testSplitView']];
+const log=document.getElementById('log'),cnt=document.getElementById('cnt'),pb=document.getElementById('pb'),st=document.getElementById('st');
+const total=280;let n=0;
+function line(h,c){const d=document.createElement('div');if(c)d.className=c;d.innerHTML=h;log.appendChild(d);while(log.children.length>10)log.firstChild.remove()}
+function done(){cnt.textContent=total;pb.style.width='100%';st.textContent='Passed';line('Executed 280 tests, with 0 failures','sum')}
+function tick(){
+  if(n>=total)return done();
+  n=Math.min(total,n+(n<24?1:Math.ceil(Math.random()*8)));
+  const [c,t]=T[Math.floor(Math.random()*T.length)];
+  line('<span class="ok">✓</span><span><span class="cls">'+c+'</span>.'+t+'</span><span class="t">'+(Math.random()*3+.4).toFixed(2)+'s</span>');
+  cnt.textContent=n;pb.style.width=(n/total*100)+'%';
+  setTimeout(tick,n<24?170:90);
+}
+if(reduce){T.slice(0,9).forEach(([c,t])=>line('<span class="ok">✓</span><span><span class="cls">'+c+'</span>.'+t+'</span>'));done()}else setTimeout(tick,400);
+
+/* versions */
+const V=['8.10.8','8.11','8.13.0','8.17.0','8.17.3','8.17.12','8.17.19','8.19.1','8.19.8','8.19.15','8.20.0','8.20.1','8.20.2','8.20.3','8.20.5','8.20.7','8.21','8.21.1','8.22','8.22.2','8.22.6','8.22.7','8.22.8','8.22.9','8.22.10','8.22.11','8.22.12','8.22.13','8.23'];
+const major=['8.11','8.13.0','8.17.0','8.20.0','8.21','8.22','8.23'];
+document.getElementById('verlist').innerHTML=V.map(v=>'<li'+(major.includes(v)?' class="major"':'')+'>'+v+'</li>').join('');
+const more=document.getElementById('more');more.textContent='Show all '+V.length+' versions';
+more.onclick=()=>document.getElementById('vers').classList.add('open');
+
+/* counters + charts start when scrolled into view */
+function count(el){const n=+el.dataset.n,p=el.dataset.p||'',s=el.dataset.s||'';
+  const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-k,3);el.textContent=p+Math.round(n*e).toLocaleString('en-US')+s;if(k<1)requestAnimationFrame(f)})(t0)}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('go');if(!reduce)e.target.querySelectorAll('[data-n]').forEach(count);io.unobserve(e.target)}),{threshold:.35});
+['report','growth','perf','ait'].forEach(id=>io.observe(document.getElementById(id)));
+if(reduce)document.querySelectorAll('#growth,#perf,#ait').forEach(e=>e.classList.add('go'));
+</script>
+</body>
+</html>
